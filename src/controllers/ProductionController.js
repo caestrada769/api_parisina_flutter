@@ -66,9 +66,9 @@ async function deleteProduction(req, res) {
 }
 
 module.exports = {
-  getAllCategorys,
-  getCategoryById,
-  createCategory,
-  updateCategory,
-  deleteCategory,
+  getAllProductions,
+  getProductionById,
+  createProduction,
+  updateProduction,
+  deleteProduction,
 };
