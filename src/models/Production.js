@@ -10,11 +10,11 @@ const productionSchema = new mongoose.Schema({
     required: true,
   },
   cantidad: {
-    type: int,
+    type: Number,
     required: true,
   },
   estado: {
-    type: int,
+    type: String,
     required: true,
   },
 });
