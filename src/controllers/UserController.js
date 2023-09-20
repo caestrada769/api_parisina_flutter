@@ -26,9 +26,9 @@ async function getUserById(req, res) {
 
 // Crear un nuevo usuario
 async function createUser(req, res) {
-  const { nombre, correo, contrasena, rol } = req.body;
+  const { nombre, correo, contrasena, rol, area } = req.body;
   try {
-    const user = new User({ nombre, correo, contrasena, rol });
+    const user = new User({ nombre, correo, contrasena, rol, area });
     await user.save();
     res.status(201).json(user);
   } catch (error) {
@@ -39,9 +39,9 @@ async function createUser(req, res) {
 // Actualizar un usuario por ID
 async function updateUser(req, res) {
   const { id } = req.params;
-  const { nombre, correo, contrasena, estado } = req.body;
+  const { nombre, correo, contrasena,area, estado } = req.body;
   try {
-    const user = await User.findByIdAndUpdate(id, { nombre, correo, contrasena, estado }, { new: true });
+    const user = await User.findByIdAndUpdate(id, { nombre, correo, contrasena, area, estado }, { new: true });
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado.' });
     }
@@ -80,7 +80,7 @@ async function loginUser(req, res) {
       return res.status(401).json({ error: 'Credenciales incorrectas.' });
     }
 
-    res.json({ message: 'Inicio de sesión exitoso.',  rol: user.rol });
+    res.json({ message: 'Inicio de sesión exitoso.',  area: user.area  });
   } catch (error) {
     res.status(500).json({ error: 'Error al iniciar sesión.' });
   }
